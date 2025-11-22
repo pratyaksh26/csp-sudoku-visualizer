@@ -2,12 +2,7 @@
 
 # 🧩 CSP Sudoku Visualizer
 
-![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![HTML5](https://img.shields.io/badge/HTML5-Semantic-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-Grid-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
-**An interactive engine visualizing Constraint Satisfaction Problems (CSP) through the lens of Sudoku.**
 
 [🔴 View Live Demo](https://pratyaksh26.github.io/csp-sudoku-visualizer/)
 
