@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSP Visualizer: Sudoku Engine</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="brand">
+            <i class="fas fa-brain"></i> CSP<strong>Viz</strong>
+        </div>
+
+        <div class="control-group">
+            <label>Algorithm Strategy</label>
+            <select id="algoSelect">
+                <option value="bt">Backtracking (Naive)</option>
+                <option value="fc" selected>Forward Checking</option>
+                <option value="ac3">MAC (Maintaining Arc Consistency)</option>
+            </select>
+        </div>
+
+        <div class="control-group">
+            <label>Heuristic</label>
+            <select id="heuristicSelect">
+                <option value="mrv">Min. Remaining Values (MRV)</option>
+                <option value="linear">Linear Scan (Top-Left)</option>
+            </select>
+        </div>
+
+        <div class="control-group">
+            <label>Difficulty</label>
+            <div class="btn-row">
+                <button onclick="game.loadLevel('easy')">Easy</button>
+                <button onclick="game.loadLevel('hard')">Hard</button>
+                <button onclick="game.loadLevel('evil')">Evil</button>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="control-group">
+            <label>Simulation Speed: <span id="speedDisplay">50ms</span></label>
+            <input type="range" id="speedRange" min="5" max="500" value="50">
+        </div>
+
+        <div class="action-buttons">
+            <button id="btnStart" class="btn-primary"><i class="fas fa-play"></i> Start</button>
+            <button id="btnPause" class="btn-secondary"><i class="fas fa-pause"></i> Pause</button>
+            <button id="btnReset" class="btn-danger"><i class="fas fa-rotate-left"></i> Reset</button>
+        </div>
+
+        <div class="stats-panel">
+            <div>Nodes Visited: <span id="nodeCount">0</span></div>
+            <div>Backtracks: <span id="backtrackCount">0</span></div>
+        </div>
+    </aside>
+
+    <main class="stage">
+        <div id="sudoku-board" class="board">
+            </div>
+        <div id="status-banner" class="status-banner">Ready to Solve</div>
+    </main>
+
+    <aside class="code-panel">
+        <h3>Algorithm Trace</h3>
+        <div id="code-display" class="code-box">
+            <div id="line-1">function Solve(CSP):</div>
+            <div id="line-2">  if assignment is complete: return true</div>
+            <div id="line-3">  var = SelectUnassignedVar(CSP)</div>
+            <div id="line-4">  for value in OrderDomainValues(var):</div>
+            <div id="line-5">    if value is consistent:</div>
+            <div id="line-6">      assign value to var</div>
+            <div id="line-7">      inferences = Propagate(CSP, var, value)</div>
+            <div id="line-8">      if inferences != failure:</div>
+            <div id="line-9">        if Solve(CSP): return true</div>
+            <div id="line-10">      backtrack (remove assignment)</div>
+            <div id="line-11">  return false</div>
+        </div>
+        
+        <h3>Event Log</h3>
+        <div id="log-container" class="log-box"></div>
+    </aside>
+
+    <script src="script.js"></script>
+</body>
+</html>
